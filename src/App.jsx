@@ -6,12 +6,15 @@ import ServicesSection from "./components/Service";
 import Projects from "./components/project";
 import ProjectDetail from "./components/ProjectDetail";
 
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={
           <>
+          <Navbar/>
             <Main />
             <AboutMe />
             <ServicesSection />

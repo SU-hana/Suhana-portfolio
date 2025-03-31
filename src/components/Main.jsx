@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar"; // Import the Navbar component
 
 const Portfolio = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,9 +12,9 @@ const Portfolio = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 flex flex-col relative overflow-hidden">
       {/* Grid overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
-  backgroundSize: '20px 20px',
-  backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`
-}}></div>
+        backgroundSize: '20px 20px',
+        backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`
+      }}></div>
       
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -21,26 +22,11 @@ const Portfolio = () => {
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full filter blur-3xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
       </div>
 
-      {/* Header / Navigation */}
-      <header className="px-8 py-4 flex items-center justify-between w-full z-10">
-        <div className="text-white text-2xl font-bold">
-          <span className="text-purple-500">S</span>
-          <span className="text-pink-500">S</span>
-        </div>
-        
-        <nav className="flex gap-8">
-          <a href="#About" className="text-white hover:text-purple-400 transition-colors">About Me</a>
-          <a href="#services" className="text-white hover:text-purple-400 transition-colors">Services</a>
-          <a href="#projects" className="text-white hover:text-purple-400 transition-colors">Projects</a>
-          <a href="#contact" className="text-white hover:text-purple-400 transition-colors">Contact Me</a>
-        </nav>
-        <button className="text-white text-xl">
-          🌙
-        </button>
-      </header>
+      {/* Navbar Component */}
+      <Navbar />
 
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col md:flex-row items-center px-16 py-4">
+      {/* Main Content - Add padding-top to account for fixed navbar */}
+      <main className="flex-1 flex flex-col md:flex-row items-center px-16 py-4 pt-24">
         {/* Left column with text */}
         <div className={`w-full md:w-1/2 space-y-6 ml-8 md:ml-16 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
           {/* Badge */}
@@ -113,35 +99,28 @@ const Portfolio = () => {
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </a>
-            {/* <a href="#" className="bg-purple-900/30 backdrop-blur-sm text-white p-3 rounded-md hover:bg-purple-800/50 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="8 12 12 16 16 12"></polyline>
-                <line x1="12" y1="8" x2="12" y2="16"></line>
-              </svg>
-            </a> */}
           </div>
         </div>
         
         {/* Right column with image */}
-<div className={`w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
-  <div className="relative">
-    {/* Purple glow/halo effect */}
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full bg-purple-700/30 filter blur-2xl"></div>
-    
-    {/* Larger darker purple circle to create depth */}
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] rounded-full bg-purple-900/50 filter blur-xl"></div>
-    
-    {/* Square image with rounded corners */}
-    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border border-gray-700">
-      <img
-        src="/profile.jpeg" 
-        alt="Suhana Shaju Profile"
-        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-      />
-    </div>
-  </div>
-</div>
+        <div className={`w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
+          <div className="relative">
+            {/* Purple glow/halo effect */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full bg-purple-700/30 filter blur-2xl"></div>
+            
+            {/* Larger darker purple circle to create depth */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] rounded-full bg-purple-900/50 filter blur-xl"></div>
+            
+            {/* Square image with rounded corners */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border border-gray-700">
+              <img
+                src="/profile.jpeg" 
+                alt="Suhana Shaju Profile"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );

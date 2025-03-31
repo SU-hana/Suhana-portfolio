@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "./projectsData";
+import Navbar from "./Navbar"; // Import the Navbar component
 
 const Projects = () => {
   const [activeSection, setActiveSection] = useState("Projects");
@@ -34,7 +35,7 @@ const Projects = () => {
     return (
       <div className="relative group transition-all duration-700">
         {/* Glowing background effect */}
-        <div className="absolute -inset-0.5  rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-500"></div>
+        <div className="absolute -inset-0.5 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-500"></div>
         
         {/* Project Card */}
         <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl h-full transition-all duration-1000 delay-200">
@@ -96,8 +97,11 @@ const Projects = () => {
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full filter blur-3xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-8 py-8 z-10">
+      {/* Add Navbar Component */}
+      <Navbar />
+
+      {/* Main Content - Add pt-24 padding-top to account for the fixed navbar */}
+      <div className="container mx-auto px-8 pt-24 pb-8 z-10">
         {/* Page Title */}
         <div className="text-center mb-12">
           <div className="inline-block bg-black/40 backdrop-blur-sm py-4 px-8 rounded-xl ">
