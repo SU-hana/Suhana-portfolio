@@ -72,7 +72,7 @@ const ServicesSection = () => {
     },
     {
       title: "Testing and Debugging",
-      description: "Comprehensive testing and debugging to ensure seamless performance and reliability.",
+      description: "Extensive testing and meticulous debugging processes to identify and resolve issues, ensuring seamless performance, stability.",
       delay: "400"
     }
   ];
@@ -114,9 +114,9 @@ const ServicesSection = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-white">My</span> <span className="text-purple-400">Services</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            {/* <p className="text-gray-300 max-w-2xl mx-auto">
               Delivering innovative solutions that transform your digital vision into reality.
-            </p>
+            </p> */}
           </div>
         </div>
 

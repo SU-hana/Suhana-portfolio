@@ -1,57 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { projects } from "./projectsData";
 
 const Projects = () => {
   const [activeSection, setActiveSection] = useState("Projects");
   const [activeCategory, setActiveCategory] = useState("ALL PROJECTS");
   const [activeBoardItem, setActiveBoardItem] = useState(null);
-
-  const projects = [
-    {
-      name: "ERP",
-      description: "Backend development & Full Stack Development",
-      image: "/erp.png",
-      category: "Python",
-      details: "Enterprise resource planning system with integrated modules",
-      technologies: ["Python", "React", "MySQL", "Docker"],
-      year: "2024"
-    },
-    {
-      name: "BeondAudit",
-      description: "Backend development & Full Stack Development",
-      image: "/beondaudit.png",
-      category: "Python",
-      details: "A comprehensive audit system with automated reporting features",
-      technologies: ["Python", "Django", "PostgreSQL", "Docker"],
-      year: "2023"
-    },
-    {
-      name: "BeondWork",
-      description: "Backend development",
-      image: "/beondwork.png",
-      category: "Python",
-      details: "Workflow automation platform for enterprise businesses",
-      technologies: ["Python", "FastAPI", "Redis", "AWS"],
-      year: "2023"
-    },
-    {
-      name: "CURRENCY DETECTOR FOR VISUALLY IMPAIRED",
-      description: "Backend development & Full Stack Development",
-      image: "/coin.png",
-      category: "Android JAVA",
-      details: "Image processing-based system to recognize Indian banknotes and provide audio feedback, enabling independent transactions.",
-      technologies: ["Android JAVA", "TensorFlow lite", "Teachable Machine "],
-      year: "2021"
-    },
-    {
-      name: "Online Car Rental",
-      description: "Backend development & Full Stack Development",
-      image: "/carrental.png",
-      category: "PHP",
-      details: "Online booking system designed to meet the specific needs of car rental companies, travel companies and travel agencies.",
-      technologies: ["PHP", "HTML", "CSS", "JavaScript"],
-      year: "2021"
-    }
-  ];
+  const [isGridView, setIsGridView] = useState(true);
 
   const navSections = [
     { name: "Projects", icon: "<>" },
@@ -60,16 +15,12 @@ const Projects = () => {
     { name: "Tech Stack", icon: "♠" }
   ];
 
-  const categories = ["ALL PROJECTS", "Python", "JavaScript", "Golang"];
+  const categories = ["ALL PROJECTS", "Python", "JavaScript", "PHP", "Android JAVA"];
 
   const filteredProjects = activeCategory === "ALL PROJECTS" 
     ? projects 
     : projects.filter(project => project.category === activeCategory);
-
-  // Board view toggle
-  const [isGridView, setIsGridView] = useState(true);
   
-  // Function to toggle active board item
   const toggleBoardItem = (index) => {
     if (activeBoardItem === index) {
       setActiveBoardItem(null);
@@ -78,15 +29,68 @@ const Projects = () => {
     }
   };
 
+  // Project Card Component matching ServiceCard style
+  const ProjectCard = ({ project }) => {
+    return (
+      <div className="relative group transition-all duration-700">
+        {/* Glowing background effect */}
+        <div className="absolute -inset-0.5  rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-500"></div>
+        
+        {/* Project Card */}
+        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl h-full transition-all duration-1000 delay-200">
+          {/* Project Image */}
+          <div className="h-48 overflow-hidden rounded-t-xl">
+            <img 
+              src={project.image} 
+              alt={project.name} 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          
+          {/* Project Content */}
+          <div className="p-6 relative z-10">
+            <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
+            <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+            
+            <div className="flex justify-between items-center">
+              <span className="bg-purple-900/30 text-purple-300 px-3 py-1 rounded-full text-xs border border-purple-700/30">
+                {project.category}
+              </span>
+              
+              <Link 
+                to={`/project/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                className="text-white hover:text-purple-400 transition-colors flex items-center gap-2 text-sm"
+              >
+                Details
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 flex flex-col relative overflow-hidden">
-      {/* Grid overlay - Same as Portfolio page */}
+      {/* Grid overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundSize: '20px 20px',
         backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`
       }}></div>
       
-      {/* Background elements - Same as Portfolio page */}
+      {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full filter blur-3xl animate-pulse" style={{animationDelay: "1.5s"}}></div>
@@ -94,9 +98,8 @@ const Projects = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-8 py-8 z-10">
-        {/* Page Title - Improved visibility */}
+        {/* Page Title */}
         <div className="text-center mb-12">
-          {/* Added background and border to make text more visible */}
           <div className="inline-block bg-black/40 backdrop-blur-sm py-4 px-8 rounded-xl ">
             <h1 className="text-5xl font-bold mb-4">
               <span className="text-white">My Professional</span> <span className="text-purple-400">Journey</span>
@@ -172,80 +175,16 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Projects Display - Conditionally render Grid or Board view */}
+        {/* Projects Display */}
         {isGridView ? (
-          // Original Grid View
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <div 
-                key={project.name} 
-                className="
-                  relative group
-                  bg-purple-900/30 
-                  backdrop-blur-sm 
-                  border border-purple-700/30 
-                  rounded-xl 
-                  overflow-hidden
-                "
-              >
-                {/* Glowing background */}
-                <div className="absolute -inset-0.5 bg-purple-600/20 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-500"></div>
-                
-                {/* Project Card */}
-                <div className="relative">
-                  <div className="h-56 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-gray-100 font-bold mb-2">{project.name}</h3>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="
-                        bg-purple-900/30 
-                        text-purple-300 
-                        px-3 py-1 
-                        rounded-full 
-                        text-sm 
-                        border border-purple-700/30
-                      ">
-                        {project.category}
-                      </span>
-                      <a 
-                        href="#" 
-                        className="
-                          text-white 
-                          hover:text-purple-400 
-                          transition-colors 
-                          flex items-center 
-                          gap-2
-                        "
-                      >
-                        Details
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          width="20" 
-                          height="20" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2"
-                        >
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          // Grid View with new ProjectCard component
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.name} project={project} />
             ))}
           </div>
         ) : (
-          // New Board View
+          // Board View (unchanged)
           <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-purple-700/30 overflow-hidden">
             {/* Board Header */}
             <div className="grid grid-cols-12 bg-purple-900/40 p-4 border-b border-purple-700/30">
@@ -304,7 +243,7 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                {/* Expanded Details */}
+                {/* Expanded Details in Board View */}
                 {activeBoardItem === index && (
                   <div className="p-6 bg-purple-950/30 border-b border-purple-700/20">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -329,9 +268,13 @@ const Projects = () => {
                       </div>
                     </div>
                     <div className="mt-4 text-right">
-                      <button className="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition-colors">
+                      <Link 
+                        to={`/project/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         View Full Project
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 )}
