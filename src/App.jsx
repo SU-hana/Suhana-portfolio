@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import IntroLandingPage from "./components/LandingPage"; // The intro landing page
+import IntroLandingPage from "./components/IntroLandingPage"; // The intro landing page
 import Main from "./components/Main";
 import AboutMe from "./components/AboutMe";
 import ServicesSection from "./components/Service";
