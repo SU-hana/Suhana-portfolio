@@ -15,7 +15,7 @@ const Portfolio = () => {
         backgroundSize: '20px 20px',
         backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`
       }}></div>
-      
+
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full filter blur-3xl animate-pulse"></div>
@@ -34,7 +34,7 @@ const Portfolio = () => {
             <span className="mr-2">✨</span>
             Crafting Tomorrow
           </div>
-          
+
           {/* Name with staggered animation */}
           <div className="space-y-1">
             <h2 className={`text-white text-5xl font-bold transition-all duration-700 delay-100 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
@@ -47,20 +47,21 @@ const Portfolio = () => {
               SHAJU
             </h1>
           </div>
-          
+
           {/* Role */}
           <h3 className={`text-white text-2xl font-medium transition-all duration-700 delay-400 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            Software Engineer
+            Product Engineer • Software Engineer
           </h3>
-          
+
           {/* Description */}
           <p className={`text-gray-300 max-w-lg transition-all duration-700 delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            A forward-thinking Software Engineer, blending creativity with
-            technical prowess to build innovative, high-performance applications.
-            With a passion for continuous learning, I turn complex challenges into
-            elegant solutions across full-stack development, and beyond.
+          A forward-thinking Product Engineer with a strong foundation in Software Engineering,
+          blending creativity with technical expertise to craft innovative, high-performance applications.
+          I thrive in cross-functional teams, turning complex challenges into elegant, scalable solutions
+          across full-stack development and product strategy.
           </p>
-          
+
+
           {/* Skills */}
           <div className={`flex flex-wrap gap-2 transition-all duration-700 delay-600 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             <span className="bg-purple-900/30 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm border border-purple-700/30">
@@ -70,7 +71,7 @@ const Portfolio = () => {
               JavaScript
             </span>
           </div>
-          
+
           {/* Social Icons */}
           <div className={`flex gap-4 transition-all duration-700 delay-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             {/* Social icons with updated LinkedIn link */}
@@ -101,20 +102,20 @@ const Portfolio = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Right column with image */}
         <div className={`w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
           <div className="relative">
             {/* Purple glow/halo effect */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full bg-purple-700/30 filter blur-2xl"></div>
-            
+
             {/* Larger darker purple circle to create depth */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] rounded-full bg-purple-900/50 filter blur-xl"></div>
-            
+
             {/* Square image with rounded corners */}
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden border border-gray-700">
               <img
-                src="/profile.jpeg" 
+                src="/profile.jpeg"
                 alt="Suhana Shaju Profile"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />

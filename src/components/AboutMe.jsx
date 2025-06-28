@@ -24,7 +24,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 flex flex-col relative overflow-hidden" id="About">
       {/* Grid overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundSize: '20px 20px',
