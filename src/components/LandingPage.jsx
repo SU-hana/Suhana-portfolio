@@ -23,12 +23,12 @@ const LandingPage = () => {
     return () => clearInterval(interval);
   }, [roles.length]); // Now roles.length is stable
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+//   const scrollToSection = (sectionId) => {
+//     const element = document.getElementById(sectionId);
+//     if (element) {
+//       element.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 relative overflow-hidden">
@@ -101,11 +101,11 @@ const LandingPage = () => {
               <h2 className="text-2xl md:text-3xl text-purple-400 font-semibold mb-4">
                 Suhana Shaju
               </h2>
-{/*               <div className="h-8 mb-8"> */}
-{/*                 <p className="text-xl text-gray-300 transition-all duration-500"> */}
-{/*                   {roles[currentText]} */}
-{/*                 </p> */}
-{/*               </div> */}
+              <div className="h-8 mb-8">
+                <p className="text-xl text-gray-300 transition-all duration-500">
+                  {roles[currentText]}
+                </p>
+              </div>
             </div>
             {/* CTA Buttons */}
             <div className={`flex flex-col sm:flex-row gap-6 justify-center transition-all duration-1000 delay-1100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
